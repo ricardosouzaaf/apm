@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: apm_production
-  username: ricardo
+  username: postgres
   password: rub32912289
