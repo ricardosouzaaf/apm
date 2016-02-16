@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: br_production
+  database: apm_production
   username: ricardo
-  password: <%= ENV['APM_DATABASE_PASSWORD'] %>
+  password: rub32912289
