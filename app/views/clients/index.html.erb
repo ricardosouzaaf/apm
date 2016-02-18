@@ -1,12 +1,20 @@
 <h1>Clientes</h1>
 
+<%= search_form_for @q do |f| %>
+
+  <%= f.label :Nome %>
+  <%= f.search_field :name_cont %>
+    <%= f.submit "Buscar ", :class => 'btn btn-primary' %>
+<% end %>
+<br />
+<hr />
 <table>
   <thead>
     <tr>
       <th>Nome Completo</th>
       <th>Nome Aluno</th>
       <th>CPF (Pai do Aluno)</th>
-      <th>Email (Pai do Aluno)</th>
+      <th>Número do Aluno</th>
       <th>Turma/Classe - Aluno</th>
       <th>Endereço</th>
 
@@ -20,7 +28,7 @@
         <td><%= client.name %></td>
         <td><%= client.student %></td>
         <td><%= client.cpf %></td>
-        <td><%= client.email %></td>
+        <td><%= client.registro_aluno %></td>
         <td><%= client.turma %></td>
         <td><%= client.address %></td>
         <td><%= link_to 'Editar', edit_client_path(client) %></td>
@@ -30,6 +38,8 @@
   </tbody>
 </table>
 
+<br />
+<%= will_paginate @clients, renderer: BootstrapPagination::Rails %>
 <br>
 
 <%= link_to 'Incluir Novo', new_client_path, :class => 'btn btn-primary' %>

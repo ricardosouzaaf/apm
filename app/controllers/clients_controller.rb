@@ -3,7 +3,9 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:edit, :update, :destroy]
 
   def index
-    @clients = Client.order(:name)
+    @q = Client.ransack(params[:q])
+    @clients = @q.result(distinct: true).order(:name).paginate(:page => params[:page], :per_page => 10)
+    #@clients = Client.order(:name)
   end
 
   def new

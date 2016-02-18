@@ -20,6 +20,8 @@ gem "rghost"
 gem "rghost_barcode"
 gem "parseline"
 gem "brcobranca", :git => "git://github.com/kivanio/brcobranca.git", :branch => "master"
+gem 'ransack'
+gem 'will_paginate-bootstrap'
 
 # js
 gem 'nprogress-rails'
@@ -28,6 +30,7 @@ gem 'sprockets-es6'
 gem 'react-rails'
 gem 'maskedinput-rails'
 gem 'momentjs-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
