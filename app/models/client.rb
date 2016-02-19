@@ -9,6 +9,7 @@ class Client < ActiveRecord::Base
   validates :email, presence: true, length: { minimum: 2 }
   validates :turma, presence: true, length: { minimum: 2 }
   validates :address, presence: true, length: { minimum: 2 }
+  validates :registro_aluno, presence: true, length: { minimum: 2 }
 
   def to_h
     result = {}
