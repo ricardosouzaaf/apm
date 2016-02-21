@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'lote/index'
+  get 'lote/generate'
+
   devise_for :users
   resources :banks
 

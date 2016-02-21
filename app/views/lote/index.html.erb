@@ -1,0 +1,53 @@
+<h2>Boletos em Lote</h2>
+<hr />
+
+<br />
+
+<p>Para gerar boletos em lote para o mês de: <strong> <%= @mes %> </strong> </p>
+<p style="color:red;"><span style="color:black;">Obs:</span> Os boletos serão gerados para o mês todo acima citado, não há como retroceder a ação de gerar boletos, após serem encaminhados.</p>
+<%= link_to 'Gerar Boletos', {:controller => 'lote', :action => 'generate'} , :class => 'btn btn-primary' %>
+<hr />
+
+
+<h5>Boletos</h5>
+
+
+<br />
+<hr />
+<table>
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Número Boleto</th>
+      <th>Valor</th>
+      <th>Emissão</th>
+      <th>Vencimento</th>
+      <th>Status</th>
+
+
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @boletos.each do |boleto| %>
+      <tr>
+
+      	<% 
+      	@cliente = boleto.client
+      	puts @cliente
+      	  %>
+        <td><%= @cliente %></td>
+        <td><%= boleto.doc_number %></td>
+        <td><%= boleto.amount %></td>
+        <td><%= boleto.date %></td>
+        <td><%= boleto.maturity %></td>
+        <td><span style="color:red;">Aguardando pgto.</span></td>
+
+ 
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
