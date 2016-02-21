@@ -82,4 +82,4 @@ production:
   <<: *default
   database: apm_sistema_production
   username: rails
-  password: ldSMhD4bfU
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
