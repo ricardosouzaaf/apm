@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: apm_production
-  username: postgres
-  password: rub32912289
+  database: apm_sistema_production
+  username: rails
+  password: ldSMhD4bfU
