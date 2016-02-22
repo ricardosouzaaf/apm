@@ -61,6 +61,6 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:name, :student, :registro_aluno, :cpf, :email, :turma ,:document, :address, :ref)
+      params.require(:client).permit(:name, :student, :registro_aluno, :phone,  :cpf, :email, :turma ,:document, :address, :ref)
     end
 end
