@@ -8,6 +8,10 @@
 <% end %>
 <br />
 <hr />
+<br />
+<%= link_to 'Incluir Novo', new_client_path, :class => 'btn btn-primary', :style => 'background: #2196F3' %>
+<hr />
+<br />
 <table>
   <thead>
     <tr>
@@ -42,4 +46,4 @@
 <%= will_paginate @clients, renderer: BootstrapPagination::Rails %>
 <br>
 
-<%= link_to 'Incluir Novo', new_client_path, :class => 'btn btn-primary' %>
+
