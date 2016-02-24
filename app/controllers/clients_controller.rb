@@ -6,6 +6,7 @@ class ClientsController < ApplicationController
     @q = Client.ransack(params[:q])
     @clients = @q.result(distinct: true).order(:name).paginate(:page => params[:page], :per_page => 3)
     #@clients = Client.order(:name)
+    @todos_clientes = Client.count
   end
 
   def new
