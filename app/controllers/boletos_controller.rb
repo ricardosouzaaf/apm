@@ -43,7 +43,8 @@ class BoletosController < ApplicationController
     @boleto.sacado_endereco = @dados_boleto.client.address
 
     headers['Content-Type']='application/pdf'
-    send_data @boleto.to(:pdf), :filename => "boleto.pdf"
+
+    send_data @boleto.to(:pdf), :filename => "boleto_#{@dados_boleto.client.student}.pdf"
 
     #send_data @boleto.to_b.to(:pdf), :filename => "boleto_#{params[:format]}.#{:pdf}"
   end
