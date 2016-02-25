@@ -7,6 +7,7 @@
         <li><%= link_to 'Clientes', clients_path %></li>
          <li><%= link_to 'Boletos', boletos_path %></li>
          <li><%= link_to 'Boletos em Lote', :controller => 'lote', :action => 'index' %></li>
+         <li><%= link_to 'Arquivos Remessa', :controller => 'remessa', :action => 'index' %></li>
          <% if user_signed_in? %>
           <li>
           <%= link_to('Sair', destroy_user_session_path, :method => :delete) %>        
@@ -17,6 +18,7 @@
         <li><%= link_to 'Clientes', clients_path %></li>
         <li><%= link_to 'Boletos', boletos_path %></li>
         <li><%= link_to 'Boletos em Lote', :controller => 'lote', :action => 'index' %></li>
+        <li><%= link_to 'Arquivos Remessa', :controller => 'remessa', :action => 'index' %></li>
        <% if user_signed_in? %>
           <li>
           <%= link_to('Sair', destroy_user_session_path, :method => :delete) %>        

@@ -2,8 +2,13 @@
 <hr />
 
 <br />
+<%= form_for generate_boleto_path do |f|%>
 
-<p>Para gerar boletos em lote para o mês de: <strong> <%= @mes %> </strong> </p>
+<p>Para gerar boletos em lote para o aluno: <strong>
+   <%= f.select :client_id, @clients.collect {|client| [ "#{client.registro_aluno} - #{client.student}", client.id ] }, :prompt => 'Selecione o número do aluno' %>
+ </strong> </p>
+<% end %>
+
 <p style="color:red;"><span style="color:black;">Obs:</span> Os boletos serão gerados para o mês todo acima citado, não há como retroceder a ação de gerar boletos, após serem encaminhados.</p>
 <%= link_to 'Gerar Boletos', {:controller => 'lote', :action => 'generate'} , :class => 'btn btn-primary' %>
 <hr />
@@ -35,9 +40,9 @@
 
       	<% 
       	@cliente = boleto.client
-      	puts @cliente
+      	puts @cliente.name
       	  %>
-        <td><%= @cliente %></td>
+        <td><%= @cliente.name %></td>
         <td><%= boleto.doc_number %></td>
         <td><%= boleto.amount %></td>
         <td><%= boleto.date %></td>

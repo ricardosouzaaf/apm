@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'remessa/index'
+
   get 'lote/index'
   get 'lote/generate'
 
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
   end
 
   resources :clients
+
+  match '/lote/generate' => 'lote#generate', :via => [:post], :as => :generate_boleto
 
   root 'clients#index'
 

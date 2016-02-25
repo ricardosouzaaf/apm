@@ -154,3 +154,29 @@ tbody {
   opacity: 0.01;
   transition: opacity .5s ease-in;
 }
+.dropdown-content li {
+  clear: both;
+  color: black;
+  cursor: pointer;
+  line-height: 1.5rem;
+  width: 100%;
+  text-align: left;
+  text-transform: none;
+}
+
+.dropdown-content li:hover, .dropdown-content li.active {
+  background-color: #2196F3;
+  color:white;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+  font-size: 14px;
+  color: #000;
+  display: block;
+  padding: 1rem 1rem;
+}
+
+.dropdown-content li > a > i {
+  height: inherit;
+  line-height: inherit;
+}
