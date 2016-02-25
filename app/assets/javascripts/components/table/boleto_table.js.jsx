@@ -27,7 +27,7 @@ var BoletoTable = React.createClass({
               <th>NF</th>
               <th>Cliente</th>
               <th>Valor</th>
-              <th>Desconto</th>
+              
               <th></th>
             </tr>
             </thead>
