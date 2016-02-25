@@ -4,8 +4,8 @@ class ClientsController < ApplicationController
 
   def index
     @q = Client.ransack(params[:q])
-    @clients = @q.result(distinct: true).order(:name).paginate(:page => params[:page], :per_page => 3)
-    #@clients = Client.order(:name)
+    @clients_index = @q.result(distinct: true).order(:name).paginate(:page => params[:page], :per_page => 20)
+    @clients = Client.order(:name)
     @todos_clientes = Client.count
   end
 
