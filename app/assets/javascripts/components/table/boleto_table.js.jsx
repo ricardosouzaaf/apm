@@ -15,7 +15,7 @@ var BoletoTable = React.createClass({
         <div>
 
           <div className="row">
-            <h3>Últimos Boletos Gerados</h3>
+            <h4>Últimos Boletos Gerados</h4>
           </div>
 
           <table className="bordered">
