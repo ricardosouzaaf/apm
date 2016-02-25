@@ -65,13 +65,6 @@ var BoletoForm = React.createClass({
 
             <div className="row">
 
-              <div className="field col s3">
-                <label>Desconto</label>
-                <BoletoFormNumber
-                    value={this.state.discount}
-                    onChange={newValue => this.setState({discount: newValue})}
-                    />
-              </div>
 
               <div className="field col s3">
                 <label>Vencimento</label>

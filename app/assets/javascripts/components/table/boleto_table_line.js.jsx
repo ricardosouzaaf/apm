@@ -24,7 +24,7 @@ var BoletoTableLine = React.createClass({
           <td>{this.props.boleto.doc_number}</td>
           <td>{this.props.boleto.client}</td>
           <BoletoTableCellEditNumber value={parseFloat(this.props.boleto.amount).toFixed(2)} onEdit={this.onEdit} prop={"amount"} />
-          <BoletoTableCellEditNumber value={parseFloat(this.props.boleto.discount || 0).toFixed(2)} onEdit={this.onEdit} prop={"discount"} />
+          
           <td>
             <a href={"/boletos/generate." + this.props.boleto.id} target="_blank">
               <i className="tiny material-icons">print</i>
