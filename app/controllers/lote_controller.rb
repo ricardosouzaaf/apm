@@ -5,7 +5,7 @@ class LoteController < ApplicationController
   	@mes = I18n.l(Date.today, format: "%B")
   	@boletos = Boleto.all
   	@clients = Client.all
-  	@q = Crediario.where(:printed => false).ransack(params[:q])
+  	@q = Crediario.ransack(params[:q])
   	@carne = @q.result(distinct: true).order(:client_id).paginate(:page => params[:page], :per_page => 12)
   	#@carne = Crediario.order(:client_id)
 
