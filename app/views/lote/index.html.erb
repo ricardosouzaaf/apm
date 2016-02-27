@@ -1,33 +1,44 @@
-<h2>Boletos em Lote</h2>
+
+<h4>Boletos em Lote</h4>
 <hr />
 
 <br />
-<%= form_for generate_boleto_path do |f|%>
+<%= form_tag({ controller: 'lote', action: 'generate' }, method: 'get') do %>
 
-<p>Para gerar boletos em lote para o aluno: <strong>
-   <%= f.select :client_id, @clients.collect {|client| [ "#{client.registro_aluno} - #{client.student}", client.id ] }, :prompt => 'Selecione o número do aluno' %>
+<p>Para gerar boletos em lote, selecione o número do aluno: <strong>
+  <%= select_tag 'client', options_from_collection_for_select(Client.all, :id, :registro_aluno) %>
+  
+
+  <%= submit_tag "Gerar Carnê" , :class => 'btn btn-primary' %>
  </strong> </p>
 <% end %>
 
-<p style="color:red;"><span style="color:black;">Obs:</span> Os boletos serão gerados para o mês todo acima citado, não há como retroceder a ação de gerar boletos, após serem encaminhados.</p>
-<%= link_to 'Gerar Boletos', {:controller => 'lote', :action => 'generate'} , :class => 'btn btn-primary' %>
+<p style="color:red;"><span style="color:black;">Obs:</span> Os carnês serão gerados para o ano todo, não há como retroceder a ação de gerar carnês.</p>
+
 <hr />
 
 
-<h5>Boletos</h5>
+<h5>Carnês</h5>
 
 
 <br />
 <hr />
+<%= search_form_for @q do |f| %>
+
+  <%= f.label "Número do Aluno:", :style => 'font-wieght:bold;' %>
+  <%= f.search_field :client_id_cont, :style => 'width:250px;' %>
+  <%= f.submit "Buscar ", :class => 'btn btn-primary', :style => 'margin-left: 50px;' %>
+
+<% end %>
 <table>
   <thead>
     <tr>
-      <th>Cliente</th>
+      <th>Aluno</th>
       <th>Número Boleto</th>
       <th>Valor</th>
       <th>Emissão</th>
       <th>Vencimento</th>
-      <th>Status</th>
+      <th>Imprimir</th>
 
 
       <th colspan="2"></th>
@@ -35,24 +46,33 @@
   </thead>
 
   <tbody>
-    <% @boletos.each do |boleto| %>
+    <% @carne.each do |carne| %>
       <tr>
 
       	<% 
-      	@cliente = boleto.client
-      	puts @cliente.name
+      	@cliente = carne.client
+      	puts @cliente.registro_aluno
       	  %>
-        <td><%= @cliente.name %></td>
-        <td><%= boleto.doc_number %></td>
-        <td><%= boleto.amount %></td>
-        <td><%= boleto.date %></td>
-        <td><%= boleto.maturity %></td>
-        <td><span style="color:red;">Aguardando pgto.</span></td>
+        <td><%= @cliente.registro_aluno %></td>
+        <td><%= carne.doc_number %></td>
+        <td><%= carne.amount %></td>
+        <td><%= carne.emission.strftime('%d/%m/%y') %></td>
+        <td><%= carne.maturity.strftime('%d/%m/%y') %></td>
+        <td>
+          <% if carne.printed == false %>
+          <span style="color:red;">Aguardando Impressão.</span>
+          <%= link_to "Imprimir", impressao_path(carne.id),  :class => "btn btn-primary", :style => "height:35px; margin-left:35px; background:grey;"  %>
+          <% else %>
+          <span style="color:red;">Impresso.</span>
+          <% end %>
+        </td>
 
  
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<div style="margin-left:25%;">
+<center><%= will_paginate @carne, renderer: BootstrapPagination::Rails, :previous_label => 'Anterior', :next_label => 'Próximo' %></center>
+</div>
 <br />

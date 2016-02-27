@@ -30,7 +30,7 @@ gem 'sprockets-es6'
 gem 'react-rails'
 gem 'maskedinput-rails'
 gem 'momentjs-rails'
-
+gem 'time_diff'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

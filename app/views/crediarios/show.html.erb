@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @crediario.client %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @crediario.amount %>
+</p>
+
+<p>
+  <strong>Emission:</strong>
+  <%= @crediario.emission %>
+</p>
+
+<p>
+  <strong>Maturity:</strong>
+  <%= @crediario.maturity %>
+</p>
+
+<p>
+  <strong>Doc number:</strong>
+  <%= @crediario.doc_number %>
+</p>
+
+<p>
+  <strong>Printed:</strong>
+  <%= @crediario.printed %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @crediario.status %>
+</p>
+
+<%= link_to 'Edit', edit_crediario_path(@crediario) %> |
+<%= link_to 'Back', crediarios_path %>

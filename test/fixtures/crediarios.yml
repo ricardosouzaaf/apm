@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client_id: 
+  amount: 
+  emission: 2016-02-25
+  maturity: 2016-02-25
+  doc_number: MyString
+  printed: false
+  status: false
+
+two:
+  client_id: 
+  amount: 
+  emission: 2016-02-25
+  maturity: 2016-02-25
+  doc_number: MyString
+  printed: false
+  status: false

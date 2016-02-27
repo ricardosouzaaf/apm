@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h4>Carnês</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Responsável</th>
+      <th>Valor</th>
+      <th>Emissão</th>
+      <th>Vencimento</th>
+      <th>Número Aluno</th>
+      <th>Impresso</th>
+      <th>Status</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @crediarios.each do |crediario| %>
+      <tr>
+        <% cliente = Client.find(crediario.client.id ) %>
+        <td><%= cliente.name %></td>
+        <td><%= crediario.amount %></td>
+        <td><%= crediario.emission.strftime("%d/%m/%Y") %></td>
+        <td><%= crediario.maturity.strftime("%d/%m/%Y")  %></td>
+        <td><%= cliente.registro_aluno %></td>
+        <% if crediario.printed %>
+        <td><p style="color:green;">Impresso</p></td>
+        <% else %>
+        <td><p style="color:red;">Não Impresso</p></td>  
+        <% end %>
+
+        <% if crediario.status %>
+        <td><p style="color:green;">Pago</p></td>
+        <% else %>
+        <td><p style="color:red;">Aguardando Pgto.</p></td>  
+        <% end %>
+
+        <td><%= link_to 'Excluir Pagamento', crediario, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
