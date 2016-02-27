@@ -28,7 +28,7 @@ class CrediariosController < ApplicationController
 
     respond_to do |format|
       if @crediario.save
-        format.html { redirect_to @crediario, notice: 'Crediario was successfully created.' }
+        format.html { redirect_to @crediario, notice: 'Carnê criado com sucesso.' }
         format.json { render :show, status: :created, location: @crediario }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CrediariosController < ApplicationController
   def update
     respond_to do |format|
       if @crediario.update(crediario_params)
-        format.html { redirect_to @crediario, notice: 'Crediario was successfully updated.' }
+        format.html { redirect_to @crediario, notice: 'Carnê Atualizado.' }
         format.json { render :show, status: :ok, location: @crediario }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class CrediariosController < ApplicationController
   def destroy
     @crediario.destroy
     respond_to do |format|
-      format.html { redirect_to crediarios_url, notice: 'Crediario was successfully destroyed.' }
+      format.html { redirect_to crediarios_url, notice: 'Parcela excluida com sucesso!' }
       format.json { head :no_content }
     end
   end
