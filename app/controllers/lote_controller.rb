@@ -18,7 +18,8 @@ class LoteController < ApplicationController
   	pai = params[:client]
 
   	puts "Cliente: #{pai}"
-  	@cliente = Client.where(:id => params[:client]).first
+
+  	@cliente = Client.where(:registro_aluno => params[:client]).first
 
   	@mes = I18n.l(Date.today, format: "%B")
 
@@ -43,7 +44,7 @@ class LoteController < ApplicationController
   		vencimento = vencimento.to_date
   		puts "O vencimento sera: #{vencimento}"
   		doc_number = "#{@cliente.registro_aluno}#{mes_atual}"
-  		carne = Crediario.new(:client_id => pai, :amount => 35.00, :emission => Date.today, :maturity => vencimento, :doc_number => doc_number, :printed => false, :status => false )
+  		carne = Crediario.new(:client_id => @cliente.id, :amount => 35.00, :emission => Date.today, :maturity => vencimento, :doc_number => doc_number, :printed => false, :status => false )
 
   		puts carne.inspect
   		
@@ -81,7 +82,7 @@ class LoteController < ApplicationController
     @boleto.data_documento = @dados_boleto.emission.to_date
     @boleto.instrucao1 = "SR. CAIXA, APÓS O VENCIMENTO NAO COBRAR MULTA, JUROS OU MORA."
     @boleto.instrucao2 = "SR. RESPONSÁVEL, O NAO PAGAMENTO DESTE BOLETO IMPLICARÁ A PERDA DO DESCONTO DO VALOR."
-    @boleto.instrucao3 = "VENCIMENTO REFERENTE AO ALUNO: #{@dados_boleto.client.student} / Turma: #{@dados_boleto.client.turma}"
+    @boleto.instrucao3 = "VENCIMENTO REFERENTE AO ALUNO: #{@dados_boleto.client.registro_aluno} / Turma: #{@dados_boleto.client.turma}"
 
     @boleto.sacado_endereco = @dados_boleto.client.address
 
