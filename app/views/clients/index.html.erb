@@ -4,8 +4,8 @@
 <br />
 <%= search_form_for @q do |f| %>
 
-  <%= f.label "Nome do Aluno:", :style => 'font-wieght:bold;' %>
-  <%= f.search_field :student_cont, :style => 'width:250px;' %>
+  <%= f.label "Número do Aluno:", :style => 'font-wieght:bold;' %>
+  <%= f.search_field :registro_aluno_eq, :style => 'width:250px;' %>
   <%= f.submit "Buscar ", :class => 'btn btn-primary', :style => 'margin-left: 50px;' %>
   <%= link_to 'Incluir Novo', new_client_path, :class => 'btn btn-primary', :style => 'background: #2196F3; margin-left:40px;' %>
 <% end %>
