@@ -65,7 +65,7 @@ class LoteController < ApplicationController
     
     @dados_boleto = Crediario.find(params[:id])
     @boleto = Brcobranca::Boleto::Sicredi.new
-    @boleto.cedente = "APM DO ColÉGIO MILITAR "
+    @boleto.cedente = "APM DO COLÉGIO MILITAR "
     @boleto.documento_cedente = "01064671000189"
     @boleto.sacado = @dados_boleto.client.name
     @boleto.sacado_documento = @dados_boleto.client.cpf
