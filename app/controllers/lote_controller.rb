@@ -8,7 +8,7 @@ class LoteController < ApplicationController
   	@q = Crediario.where(:printed => false).ransack(params[:q])
   	@carne = @q.result(distinct: true).order(:client_id).paginate(:page => params[:page], :per_page => 12)
   	#@carne = Crediario.order(:client_id)
-    @turmas = Client.select("turma").distinct
+    @turmas = Client.select("turma").distinct.order(:turma)
 
     @turmas.each do |turma|
 
