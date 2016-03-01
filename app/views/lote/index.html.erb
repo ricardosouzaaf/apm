@@ -6,8 +6,8 @@
 <%= form_tag({ controller: 'lote', action: 'generate' }, method: 'get') do %>
 
 <p>Para gerar boletos em lote, informe o número do aluno: <strong>
-  <%= text_field_tag 'client', nil, placeholder: 'Informe o número do aluno', maxlength: 5 %>
-  
+
+  <%= select_month(0 , prompt: 'Selecione o mês...') %>
   
 
   <%= submit_tag "Gerar Carnê" , :class => 'btn btn-primary' %>
