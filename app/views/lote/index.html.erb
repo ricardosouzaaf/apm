@@ -5,10 +5,12 @@
 <br />
 <%= form_tag({ controller: 'lote', action: 'generate' }, method: 'get') do %>
 
-<p>Para gerar boletos em lote, informe o mês: <strong>
+<p>Para gerar boletos em lote, informe o mês e a turma: <strong>
 
   <%= select_month(Date.today, field_name: 'start')%>
-  
+
+  <%= select_tag "turma", options_from_collection_for_select(@turmas, 'id', 'turma')
+ %>  
 
   <%= submit_tag "Gerar Carnê" , :class => 'btn btn-primary' %>
  </strong> </p>

@@ -8,6 +8,13 @@ class LoteController < ApplicationController
   	@q = Crediario.where(:printed => false).ransack(params[:q])
   	@carne = @q.result(distinct: true).order(:client_id).paginate(:page => params[:page], :per_page => 12)
   	#@carne = Crediario.order(:client_id)
+    @turmas = Client.select("turma").all
+
+    @turmas.each do |turma|
+
+      puts turma.turma
+
+    end
 
   end
 
@@ -19,7 +26,7 @@ class LoteController < ApplicationController
     puts "Mes: #{mes}"
   
 
-    @todos = Client.all
+    @todos = Client.order(:turma)
 
     @mes = I18n.l(Date.today, format: "%B")
 
