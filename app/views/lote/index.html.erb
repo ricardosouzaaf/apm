@@ -27,7 +27,7 @@
 <%= search_form_for @q do |f| %>
 
   <%= f.label "Número do Aluno:", :style => 'font-wieght:bold;' %>
-  <%= f.search_field :client_id_cont, :style => 'width:250px;' %>
+  <%= f.search_field :client_id_eq, :style => 'width:250px;' %>
   <%= f.submit "Buscar ", :class => 'btn btn-primary', :style => 'margin-left: 50px;' %>
 
 <% end %>
