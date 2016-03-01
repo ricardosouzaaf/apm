@@ -9,7 +9,7 @@
 
   <%= select_month(Date.today, field_name: 'start')%>
 
-  <%= select_tag "turma", options_from_collection_for_select(@turmas, 'id', 'turma')
+  <%= select_tag :turma , options_from_collection_for_select(@turmas, 'turma', 'turma'), prompt: "Selecione a Turma"
  %>  
 
   <%= submit_tag "Gerar Carnê" , :class => 'btn btn-primary' %>

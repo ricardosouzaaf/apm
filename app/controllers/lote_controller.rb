@@ -20,13 +20,18 @@ class LoteController < ApplicationController
 
   def generate
   	
-  	#pegando parametro do pai
+    turma = params[:turma]
+ 
 
     mes = params[:date][:start]
     puts "Mes: #{mes}"
+
+    
+
+    puts "Turma #{turma}"
   
 
-    @todos = Client.order(:turma)
+    @todos = Client.where(:turma => turma).order(:registro_aluno)
 
     @mes = I18n.l(Date.today, format: "%B")
 
@@ -95,7 +100,7 @@ class LoteController < ApplicationController
 
     end
 
-     send_data Brcobranca::Boleto::Base.lote(@boletos_para_impressao), :filename => "Carnês_APM_Mês(#{mes}).pdf"
+     send_data Brcobranca::Boleto::Base.lote(@boletos_para_impressao), :filename => "Carnês_APM_Mês(#{mes}) - Turma(#{turma}).pdf"
 
 
 
